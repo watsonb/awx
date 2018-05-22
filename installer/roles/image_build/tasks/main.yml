@@ -187,6 +187,12 @@
     dest: '{{ docker_base_path }}/RPM-GPG-KEY-ansible-release'
   delegate_to: localhost
 
+- name: Stage venv_ansible_modules
+  copy:
+    src: 'venv_ansible_modules.sh'
+    dest: '{{ docker_base_path }}/venv_ansible_modules.sh'
+  delegate_to: localhost
+
 - name: Build base web image
   docker_image:
     buildargs:

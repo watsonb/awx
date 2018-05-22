@@ -6,8 +6,8 @@ localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env pyth
 # Otherwise the setup playbook will install the official Ansible images. Versions may
 # be selected based on: latest, 1, 1.0, 1.0.0, 1.0.0.123
 # by default the base will be used to search for ansible/awx_web and ansible/awx_task
-dockerhub_base=ansible
-dockerhub_version=latest
+# dockerhub_base=ansible
+# dockerhub_version=latest
 
 # Openshift Install
 # Will need to set -e openshift_password=developer -e docker_registry_password=$(oc whoami -t)
@@ -52,10 +52,17 @@ docker_compose_dir=/var/lib/awx
 # docker_registry_repository=awx
 # docker_registry_username=developer
 
+docker_registry=hub.docker.com
+docker_registry_repository=benwatson/awx
+docker_registry_username=bwatson1979@gmail.com
+
+#awx_version=1.0.6-8-g72f2994cc-kiewitcustom
+use_container_for_build=false
+
 
 # Docker_image will not attempt to push to remote if the image already exists locally
 # Set this to true to delete images from docker on the build host so that they are pushed to the remote repository
-# docker_remove_local_images=False
+docker_remove_local_images=True
 
 # Set pg_hostname if you have an external postgres server, otherwise
 # a new postgres service will be created
@@ -89,7 +96,7 @@ secret_key=awxsecret
 # Build AWX with official logos
 # Requires cloning awx-logos repo into the project root.
 # Review the trademark guidelines at https://github.com/ansible/awx-logos/blob/master/TRADEMARKS.md
-# awx_official=false
+awx_official=true
 
 # Proxy
 #http_proxy=http://proxy:3128
